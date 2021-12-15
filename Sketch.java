@@ -2,52 +2,38 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 
+  int constantOne = 300;
+  int constantTwo = 300;
+  double angleOne = 0.05;
+  double angleTwo = 0.05 - Math.PI;
+  int scalarX = 300;
+  int scalarY = 250;
+  double speed = 0.03;
 
-  /**
-   * state global variables
-   *  
-   * */ 
-  public float circleY = -50;
-
-	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
   public void settings() {
-	  // put your size call here
-    size(200, 200);
+    size(600, 200);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
   public void setup() {
-    background(210, 255, 173);
+    smooth();
   }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
+
   public void draw() {
-	  
-    // clear out old frames
     background(32);
+    float circleYOne = constantOne + sin((float) angleOne) * scalarY;
+    float circleXOne = constantOne + cos((float) angleOne) * scalarX;
 
-    // draw current frame based on state
-    ellipse(100, circleY, 50, 50);
-  
-    // modify state
-    circleY = circleY + 1;
-  
-    // reset state
-    if(circleY > height+50) {
-      circleY = 0;
-    }
+    float circleXTwo = constantTwo + cos((float) angleTwo) * scalarX;
+    float circleYTwo = constantTwo + sin((float) angleTwo) * scalarY;
+    // SUN
+    fill(240, 169, 62);
+    ellipse(circleXOne, circleYOne, 50, 50);
+    
+    // MOON
+    fill(148, 146, 142);
+    ellipse(circleXTwo, circleYTwo, 50, 50);
+    angleOne = angleOne + speed;
+    angleTwo = angleTwo + speed;
   }
-  
-  // define other methods down here.
-
-
 }
