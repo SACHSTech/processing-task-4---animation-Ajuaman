@@ -18,21 +18,44 @@ public class Sketch extends PApplet {
     smooth();
   }
 
-
   public void draw() {
-    background(32);
+
+    // Percentage through it's cycle
+    float percentageOne = (float) (((angleOne / (2 * Math.PI)) * 200) + 30) % 200;
+    
+    // Calculates the brightness
+    float difference = Math.abs(percentageOne - 100);
+
+    // Use HSB colour picker mode
+    colorMode(HSB, 360, 100, 100);
+    background(42, 100, (int) (difference * 0.7));
+    colorMode(RGB, 255, 255, 255);
+    
+    if(difference < 30){
+      // ADDING STARS
+      fill(225);
+      ellipse(10, 10, 10, 10);
+      ellipse(100, 100, 10, 10);
+      ellipse(244, 23, 10, 10);
+      ellipse(154, 124, 10, 10);
+      ellipse(321, 24, 10, 10);
+      ellipse(453, 83, 10, 10);
+      fill(148, 146, 142);
+    }
+
     float circleYOne = constantOne + sin((float) angleOne) * scalarY;
     float circleXOne = constantOne + cos((float) angleOne) * scalarX;
 
     float circleXTwo = constantTwo + cos((float) angleTwo) * scalarX;
     float circleYTwo = constantTwo + sin((float) angleTwo) * scalarY;
+
     // SUN
     fill(240, 169, 62);
     ellipse(circleXOne, circleYOne, 50, 50);
     
     // MOON
-    fill(148, 146, 142);
     ellipse(circleXTwo, circleYTwo, 50, 50);
+
     angleOne = angleOne + speed;
     angleTwo = angleTwo + speed;
   }
