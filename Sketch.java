@@ -25,6 +25,7 @@ public class Sketch extends PApplet {
     // Calculates the brightness
     float difference1 = Math.abs(percentageOne - 100);
 
+    // Same thing here
     float percentageTwo = (float) ((((angleOne / (2 * Math.PI)) % 1) * 666) - 30) % 510;
     float difference2 = Math.abs(percentageTwo - 255);
 
