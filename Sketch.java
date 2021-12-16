@@ -22,24 +22,29 @@ public class Sketch extends PApplet {
 
     // Percentage through it's cycle
     float percentageOne = (float) (((angleOne / (2 * Math.PI)) * 200) + 30) % 200;
-    
     // Calculates the brightness
-    float difference = Math.abs(percentageOne - 100);
+    float difference1 = Math.abs(percentageOne - 100);
+
+    float percentageTwo = (float) (((angleOne / (2 * Math.PI)) * 1300) + 10) % 1300;
+    float difference2 = Math.abs(percentageTwo - 255);
 
     // Use HSB colour picker mode
     colorMode(HSB, 360, 100, 100);
-    background(42, 100, (int) (difference * 0.7));
+    background(42, 100, (int) (difference1 * 0.7));
     colorMode(RGB, 255, 255, 255);
     
-    if(difference < 30){
+    // ADDS STARS WHEN THE BRIGHTNESS IS A CERTAIN VALUE
+    if(difference1 < 30){
       // ADDING STARS
-      fill(225);
+      fill(255, 255, 255, difference2);
       ellipse(10, 10, 10, 10);
       ellipse(100, 100, 10, 10);
       ellipse(244, 23, 10, 10);
       ellipse(154, 124, 10, 10);
       ellipse(321, 24, 10, 10);
       ellipse(453, 83, 10, 10);
+      ellipse(490, 83, 10, 10);
+      ellipse(260, 100, 10, 10);
       fill(148, 146, 142);
     }
 
