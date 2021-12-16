@@ -25,7 +25,7 @@ public class Sketch extends PApplet {
     // Calculates the brightness
     float difference1 = Math.abs(percentageOne - 100);
 
-    float percentageTwo = (float) (((angleOne / (2 * Math.PI)) * 1300) + 10) % 1300;
+    float percentageTwo = (float) ((((angleOne / (2 * Math.PI)) % 1) * 666) - 30) % 510;
     float difference2 = Math.abs(percentageTwo - 255);
 
     // Use HSB colour picker mode
@@ -59,6 +59,7 @@ public class Sketch extends PApplet {
     ellipse(circleXOne, circleYOne, 50, 50);
     
     // MOON
+    fill(130, 130, 126);
     ellipse(circleXTwo, circleYTwo, 50, 50);
 
     angleOne = angleOne + speed;
